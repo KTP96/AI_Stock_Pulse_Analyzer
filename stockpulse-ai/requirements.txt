@@ -1,2 +1,2 @@
-``text
-# No external dependencies required for current CLI version
+# Test Dependencies
+pytest
