@@ -29,3 +29,23 @@ Run the application from the project root:
 
 ```
 python app/stockpulse.py
+```
+
+## Current Status
+
+- Initial command-line version completed.
+- The project currently supports:
+
+* Rule-based sentiment analysis
+* Sentiment scoring
+* Sample price movement analysis
+* Basic insight generation
+
+## Future Improvements
+- Add unit tests using pytest
+- Add FastAPI backend
+- Add Streamlit dashboard
+- Add Docker support
+- Add GitHub Actions CI/CD pipeline
+- Deploy on AWS EC2
+- Add logging and health checks
