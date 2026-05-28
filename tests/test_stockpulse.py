@@ -45,5 +45,29 @@ def test_flat_pricemovement():
     assert price_change_percent == 0.0
     assert trend == "Flat"
 
+def test_no_price_pricemovement():
+    price_list = []
+    price_change, price_change_percent = calculate_price_change(price_list)
+    trend = get_price_movement(price_change)
+    assert price_change is None
+    assert price_change_percent is None
+    assert trend == "Invalid price change"
+
+def test_one_val_pricemovement():
+    price_list = [100]
+    price_change, price_change_percent = calculate_price_change(price_list)
+    trend = get_price_movement(price_change)
+    assert price_change is None
+    assert price_change_percent is None
+    assert trend == "Invalid price change"
+
+def test_zero_start_pricemovement():
+    price_list = [0, 100]
+    price_change, price_change_percent = calculate_price_change(price_list)
+    trend = get_price_movement(price_change)
+    assert price_change is None
+    assert price_change_percent is None
+    assert trend == "Invalid price change"
+
 
     
