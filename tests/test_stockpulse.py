@@ -1,4 +1,5 @@
-from app.stockpulse import analyze_headline_sentiment, calculate_price_change, get_price_movement
+from app.sentiment import analyze_headline_sentiment
+from app.price import calculate_price_change, get_price_movement
 
 def test_positive_headline_sentiment():
     sentiment, pos_word_count, neg_word_count, sentiment_score = analyze_headline_sentiment("NVDA reports strong AI chip demand") 
