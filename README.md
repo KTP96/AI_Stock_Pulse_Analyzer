@@ -1,5 +1,7 @@
 # StockPulse AI
 
+![StockPulse CI](https://github.com/KTP96/AI/actions/workflows/ci.yml/badge.svg)
+
 ## Project Overview
 
 StockPulse AI is a beginner-friendly AI + DevOps project that analyzes stock-related news headlines using rule-based sentiment analysis and compares the result with sample stock price movement.
@@ -30,6 +32,12 @@ Run the application from the project root:
 ```
 python app/stockpulse.py
 ```
+
+## DevOps Progress
+
+- Added pytest-based automated tests for sentiment analysis and price movement logic
+- Added GitHub Actions CI workflow to run tests automatically on push to main
+- Verified CI pipeline successfully passes on GitHub
 
 ## Current Status
 
