@@ -1,4 +1,4 @@
-from app.sentiment import analyze_all_headlines, analyze_headline_sentiment, compare_sentiment_counts, generate_insight
+from app.sentiment import analyze_all_headlines, compare_sentiment_counts, generate_insight
 from app.price import get_price_movement, calculate_price_change
     
 def print_headline_results(results):
