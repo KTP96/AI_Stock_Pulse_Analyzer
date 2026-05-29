@@ -32,10 +32,15 @@ def analyze_request(request: AnalyzeRequest):
     return {
         "ticker": ticker,
         "overall_sentiment": overall_sentiment,
+        "positive_headlines": pos_hl_count,
+        "negative_headlines": neg_hl_count,
+        "neutral_headlines": neu_hl_count,
+        "overall_sentiment_score": overall_score,
         "price_movement": price_movement, 
         "price_change": price_change,
         "price_change_percent": price_change_percent,
-        "insight": insight
+        "insight": insight,
+        "headline_results": headline_results
     }
     
 
