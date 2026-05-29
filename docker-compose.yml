@@ -1,0 +1,6 @@
+services:
+  stockpulse-api:
+    build: .
+    container_name: stockpulse-api
+    ports:
+      - "8000:8000"
