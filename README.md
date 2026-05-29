@@ -37,12 +37,15 @@ The current version is a command-line Python application. Future versions will a
     - Analyzes stock-related sample headlines and sample price movement.
 
     - Example request:
+
         ```
         {
         "ticker": "nvda"
         }
         ```
+
     - Example response:
+
         ```
         {
         "ticker": "NVDA",
@@ -57,7 +60,47 @@ The current version is a command-line Python application. Future versions will a
         "insight": "Positive sentiment matches upward price movement."
         }
         ```
-        
+## Running with Docker
+
+Build the Docker image:
+
+```
+docker build -t stockpulse-ai .
+```
+
+Run the container:
+
+```
+docker run -p 8000:8000 stockpulse-ai
+```
+
+
+Test the health endpoint:
+
+```
+curl http://127.0.0.1:8000/health
+```
+
+## Running with Docker Compose
+
+Start the service:
+
+```
+docker compose up
+```
+
+Test the API:
+
+```
+curl http://127.0.0.1:8000/health
+```
+
+Stop the service:
+
+```
+docker compose down
+```
+
 ## Tech Stack
 
 - Python
