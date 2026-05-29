@@ -18,6 +18,46 @@ The current version is a command-line Python application. Future versions will a
 - Calculate sample stock price movement
 - Generate a simple insight comparing news sentiment with price movement
 
+## API Endpoints
+
+### GET /health
+
+    - Returns service health status.
+
+    - Example response:
+
+        ```
+        {
+        "status": "ok"
+        }
+        ```
+
+### POST /analyze
+
+    - Analyzes stock-related sample headlines and sample price movement.
+
+    - Example request:
+        ```
+        {
+        "ticker": "nvda"
+        }
+        ```
+    - Example response:
+        ```
+        {
+        "ticker": "NVDA",
+        "overall_sentiment": "Positive",
+        "positive_headlines": 3,
+        "negative_headlines": 2,
+        "neutral_headlines": 0,
+        "overall_sentiment_score": 2,
+        "price_movement": "Up",
+        "price_change": 8,
+        "price_change_percent": 8.0,
+        "insight": "Positive sentiment matches upward price movement."
+        }
+        ```
+        
 ## Tech Stack
 
 - Python
@@ -44,10 +84,10 @@ python app/stockpulse.py
 - Initial command-line version completed.
 - The project currently supports:
 
-* Rule-based sentiment analysis
-* Sentiment scoring
-* Sample price movement analysis
-* Basic insight generation
+    * Rule-based sentiment analysis
+    * Sentiment scoring
+    * Sample price movement analysis
+    * Basic insight generation
 
 ## Future Improvements
 - Add unit tests using pytest
