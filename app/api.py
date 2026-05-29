@@ -1,7 +1,43 @@
 from fastapi import FastAPI
+from pydantic import BaseModel
+from app.price import calculate_price_change, get_price_movement
+from app.sentiment import analyze_all_headlines, generate_insight, compare_sentiment_counts
 
 app = FastAPI()
+
+class AnalyzeRequest(BaseModel):
+    ticker: str
 
 @app.get("/health")
 def health_check():
     return {"status": "ok"}
+
+@app.post("/analyze")
+def analyze_request(request: AnalyzeRequest):
+    headlines = [
+        "NVDA reports strong AI chip demand",
+        "NVDA faces supply chain concerns",
+        "Analysts raise NVDA price target",
+        "NVDA expands data center business",
+        "Investors worry about valuation"
+    ]
+    
+    ticker = request.ticker.upper()
+    price_change, price_change_percent = calculate_price_change([100, 102, 105, 103, 108])
+    price_movement = get_price_movement(price_change)
+    pos_hl_count, neg_hl_count, neu_hl_count, overall_score, headline_results = analyze_all_headlines(headlines)
+    overall_sentiment = compare_sentiment_counts(pos_hl_count, neg_hl_count)
+    insight = generate_insight(overall_sentiment, price_movement)
+    
+    return {
+        "ticker": ticker,
+        "overall_sentiment": overall_sentiment,
+        "price_movement": price_movement, 
+        "price_change": price_change,
+        "price_change_percent": price_change_percent,
+        "insight": insight
+    }
+    
+
+
+
