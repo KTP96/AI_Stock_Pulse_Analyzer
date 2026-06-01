@@ -100,6 +100,7 @@ Stop the service:
 ```
 docker compose down
 ```
+
 ## Running Full App with Docker Compose
 
 Start both the FastAPI backend and Streamlit dashboard:
@@ -107,6 +108,7 @@ Start both the FastAPI backend and Streamlit dashboard:
 ```
 docker compose up --build
 ```
+
 ## Open the apps:
 
 FastAPI Swagger UI: http://127.0.0.1:8000/docs
@@ -140,6 +142,15 @@ FastAPI Backend
  |
  v
 Sentiment Analysis + Price Movement Logic
+```
+
+## Logging
+
+While running with Docker Compose, API logs can be viewed using:
+
+```
+docker compose logs stockpulse-api
+
 ```
 
 ## DevOps Progress
