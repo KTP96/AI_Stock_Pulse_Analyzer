@@ -2,20 +2,24 @@ from fastapi import FastAPI
 from pydantic import BaseModel, Field
 from app.price import calculate_price_change, get_price_movement
 from app.sentiment import analyze_all_headlines, generate_insight, compare_sentiment_counts
+import logging
 
+logging.basicConfig(level = logging.INFO)
+logger = logging.getLogger(__name__)
 app = FastAPI()
 
 class AnalyzeRequest(BaseModel):
     ticker: str = Field(..., min_length = 1)
 
+
 @app.get("/health")
 def health_check():
+    logger.info("Health check endpoint called")
     return {"status": "ok"}
 
 @app.post("/analyze")
 def analyze_request(request: AnalyzeRequest):
     
-
     headlines = [
         "NVDA reports strong AI chip demand",
         "NVDA faces supply chain concerns",
@@ -25,6 +29,8 @@ def analyze_request(request: AnalyzeRequest):
     ]
     
     ticker = request.ticker.upper()
+    logger.info(f"Analyze endpoint called for ticker: {ticker}")
+    
     price_change, price_change_percent = calculate_price_change([100, 102, 105, 103, 108])
     price_movement = get_price_movement(price_change)
     pos_hl_count, neg_hl_count, neu_hl_count, overall_score, headline_results = analyze_all_headlines(headlines)
