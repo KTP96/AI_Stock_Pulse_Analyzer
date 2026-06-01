@@ -127,6 +127,21 @@ Run the application from the project root:
 python app/stockpulse.py
 ```
 
+## Architecture
+
+```
+User
+ |
+ v
+Streamlit Dashboard
+ |
+ v
+FastAPI Backend
+ |
+ v
+Sentiment Analysis + Price Movement Logic
+```
+
 ## DevOps Progress
 
 - Added pytest-based automated tests for sentiment analysis and price movement logic
