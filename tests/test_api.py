@@ -3,6 +3,30 @@ from app.api import app
 
 client = TestClient(app)
 
+
+def test_uppercase():
+    response = client.post("/analyze", json = {"ticker" : "NVDA"})
+    data = response.json()
+
+    assert response.status_code == 200
+    assert data["ticker"] == "NVDA"
+
+def test_lowercase():
+    response = client.post("/analyze", json = {"ticker" : "nvda"})
+    data = response.json()
+    
+    assert response.status_code == 200
+    assert data["ticker"] == "NVDA"
+
+def test_missing_ticker():
+    response = client.post("/analyze", json={})
+    assert response.status_code == 422
+
+
+def test_non_string_ticker():
+    response = client.post("/analyze", json = {"ticker" : 123})
+    assert response.status_code == 422
+
 def test_analyze_endpoint_returns_stock_analysis():
 
     response = client.post("/analyze", json = {"ticker": "nvda"})
