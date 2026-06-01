@@ -58,6 +58,7 @@ The current version is a command-line Python application. Future versions will a
         "price_change": 8,
         "price_change_percent": 8.0,
         "insight": "Positive sentiment matches upward price movement."
+        "headline_results": [{}]
         }
         ```
 ## Running with Docker
@@ -73,7 +74,6 @@ Run the container:
 ```
 docker run -p 8000:8000 stockpulse-ai
 ```
-
 
 Test the health endpoint:
 
@@ -100,6 +100,17 @@ Stop the service:
 ```
 docker compose down
 ```
+## Running Full App with Docker Compose
+
+Start both the FastAPI backend and Streamlit dashboard:
+
+```
+docker compose up --build
+```
+## Open the apps:
+
+FastAPI Swagger UI: http://127.0.0.1:8000/docs
+Streamlit Dashboard: http://127.0.0.1:8501
 
 ## Tech Stack
 
