@@ -1,12 +1,12 @@
 from fastapi import FastAPI
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 from app.price import calculate_price_change, get_price_movement
 from app.sentiment import analyze_all_headlines, generate_insight, compare_sentiment_counts
 
 app = FastAPI()
 
 class AnalyzeRequest(BaseModel):
-    ticker: str
+    ticker: str = Field(..., min_length = 1)
 
 @app.get("/health")
 def health_check():
@@ -14,6 +14,8 @@ def health_check():
 
 @app.post("/analyze")
 def analyze_request(request: AnalyzeRequest):
+    
+
     headlines = [
         "NVDA reports strong AI chip demand",
         "NVDA faces supply chain concerns",

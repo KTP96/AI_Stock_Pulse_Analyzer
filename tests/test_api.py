@@ -19,9 +19,12 @@ def test_lowercase():
     assert data["ticker"] == "NVDA"
 
 def test_missing_ticker():
-    response = client.post("/analyze", json={})
+    response = client.post("/analyze", json = {})
     assert response.status_code == 422
 
+def test_empty_ticker():
+    response = client.post("/analyze", json={"ticker" : ""})
+    assert response.status_code == 422
 
 def test_non_string_ticker():
     response = client.post("/analyze", json = {"ticker" : 123})
