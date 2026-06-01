@@ -1,11 +1,11 @@
 import streamlit as st
 import requests
-
-
+import os
 
 st.title("StockPulse AI Dashboard")
 st.write("Analyze stock news sentiment and price movement.")
 
+api_url = os.getenv("API_URL", "http://127.0.0.1:8000")
 
 ticker = st.text_input("Enter a stock ticker: ")
 analyze_button = st.button("Analyze Stock")
@@ -15,7 +15,7 @@ if analyze_button:
         ticker = ticker.upper()
         try:
             response = requests.post(
-                "http://127.0.0.1:8000/analyze",
+                f"{api_url}/analyze",
                 json = {"ticker": ticker}
             )
             data = response.json()

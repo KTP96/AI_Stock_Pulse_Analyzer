@@ -4,3 +4,14 @@ services:
     container_name: stockpulse-api
     ports:
       - "8000:8000"
+  
+  stockpulse-dashbpoard:
+    container_name: stockpulse-dashboard
+    command: streamlit run app/dashboard.py --server.address 0.0.0.0 --server.port 8501
+    build: .
+    ports:
+      - "8501:8501"
+    environment:
+      - API_URL=http://stockpulse-api:8000
+    depends_on:
+      - stockpulse-api
