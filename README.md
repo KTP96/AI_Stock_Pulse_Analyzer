@@ -153,6 +153,28 @@ docker compose logs stockpulse-api
 
 ```
 
+## Streamlit Dashboard
+
+The project includes a Streamlit dashboard that provides a simple web UI for analyzing stock sentiment and price movement.
+
+The dashboard allows users to:
+
+- Enter a stock ticker
+- Call the FastAPI backend
+- View overall sentiment
+- View price movement
+- View sentiment score
+- View headline-level sentiment results in a table
+- Check backend connection status
+
+### Run Streamlit Locally
+
+Start the FastAPI backend first:
+
+```
+uvicorn app.api:app --reload
+
+
 ## DevOps Progress
 
 - Added pytest-based automated tests for sentiment analysis and price movement logic

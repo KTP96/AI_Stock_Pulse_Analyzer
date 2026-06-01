@@ -7,6 +7,16 @@ st.write("Analyze stock news sentiment and price movement.")
 
 api_url = os.getenv("API_URL", "http://127.0.0.1:8000")
 
+try:
+    response = requests.get(f"{api_url}/health", timeout = 3)
+    if response.status_code == 200:
+        st.success("Backend Status: Connected")
+    else:
+        st.warning("Backend Status: Not Healthy")
+except requests.exceptions.ConnectionError:
+    st.error("Backend Status: Not Connected")
+
+
 ticker = st.text_input("Enter a stock ticker: ")
 analyze_button = st.button("Analyze Stock")
 
