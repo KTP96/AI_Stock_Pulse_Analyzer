@@ -91,7 +91,7 @@ Example response:
 
 Run the command-line version from the project root:
 
-```bash
+``` 
 python app/stockpulse.py
 ```
 
@@ -99,7 +99,7 @@ python app/stockpulse.py
 
 Run all automated tests:
 
-```bash
+``` 
 python3 -m pytest
 ```
 
@@ -107,13 +107,13 @@ python3 -m pytest
 
 Start the FastAPI backend:
 
-```bash
+``` 
 uvicorn app.api:app --reload
 ```
 
 Open Swagger UI:
 
-```text
+```  
 http://127.0.0.1:8000/docs
 ```
 
@@ -135,19 +135,19 @@ The dashboard allows users to:
 
 Start the FastAPI backend first:
 
-```bash
+``` 
 uvicorn app.api:app --reload
 ```
 
 Then start the Streamlit dashboard:
 
-```bash
+``` 
 streamlit run app/dashboard.py
 ```
 
 Open the dashboard:
 
-```text
+```  
 http://127.0.0.1:8501
 ```
 
@@ -155,19 +155,19 @@ http://127.0.0.1:8501
 
 Build the Docker image:
 
-```bash
+``` 
 docker build -t stockpulse-ai .
 ```
 
 Run the container:
 
-```bash
+``` 
 docker run -p 8000:8000 stockpulse-ai
 ```
 
 Test the health endpoint:
 
-```bash
+``` 
 curl http://127.0.0.1:8000/health
 ```
 
@@ -175,26 +175,26 @@ curl http://127.0.0.1:8000/health
 
 Start both the FastAPI backend and Streamlit dashboard:
 
-```bash
+``` 
 docker compose up --build
 ```
 
 Open the apps:
 
-```text
+```  
 FastAPI Swagger UI: http://127.0.0.1:8000/docs
 Streamlit Dashboard: http://127.0.0.1:8501
 ```
 
 Stop the services:
 
-```bash
+``` 
 docker compose down
 ```
 
 ## Architecture
 
-```text
+```  
 User
  |
  v
@@ -211,13 +211,13 @@ Sentiment Analysis + Price Movement Logic
 
 When running with Docker Compose, API logs can be viewed using:
 
-```bash
+``` 
 docker compose logs stockpulse-api
 ```
 
 Example log messages:
 
-```text
+```  
 Health check endpoint called
 Analyze endpoint called for ticker: NVDA
 ```
@@ -230,7 +230,7 @@ The application can be deployed on an AWS EC2 Ubuntu instance using Docker Compo
 
 Install Docker, Docker Compose plugin, and Git:
 
-```bash
+``` 
 sudo apt update
 sudo apt install -y docker.io docker-compose-plugin git
 sudo systemctl start docker
@@ -242,26 +242,26 @@ Log out and log back in after adding the user to the Docker group.
 
 ### Clone Repository
 
-```bash
+``` 
 git clone https://github.com/KTP96/AI.git
 cd AI
 ```
 
 ### Run Application
 
-```bash
+```
 docker compose up --build -d
 ```
 
 ### Verify Containers
 
-```bash
+```
 docker ps
 ```
 
 Expected containers:
 
-```text
+```
 stockpulse-api
 stockpulse-dashboard
 ```
@@ -270,21 +270,21 @@ stockpulse-dashboard
 
 Replace `<EC2_PUBLIC_IP>` with the public IP address of the EC2 instance.
 
-```text
+```
 FastAPI Swagger UI: http://<EC2_PUBLIC_IP>:8000/docs
 Streamlit Dashboard: http://<EC2_PUBLIC_IP>:8501
 ```
 
 ### View Logs
 
-```bash
+```
 docker compose logs stockpulse-api
 docker compose logs stockpulse-dashboard
 ```
 
 ### Stop Application
 
-```bash
+```
 docker compose down
 ```
 
