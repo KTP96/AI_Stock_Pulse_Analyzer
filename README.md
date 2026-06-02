@@ -287,6 +287,48 @@ docker compose logs stockpulse-dashboard
 ```
 docker compose down
 ```
+### GitHub Container Registry
+
+The Docker image is published to GitHub Container Registry by GitHub Actions.
+
+Image:
+
+```
+ghcr.io/ktp96/stockpulse-ai:latest
+
+```
+
+## Pull the image:
+
+```
+docker pull ghcr.io/ktp96/stockpulse-ai:latest
+```
+
+## Run the FastAPI backend from the image:
+
+```
+docker run -p 8000:8000 ghcr.io/ktp96/stockpulse-ai:latest
+```
+
+## Test the health endpoint:
+
+```
+curl http://127.0.0.1:8000/health
+```
+
+## Current Deployment Flow 
+
+Code push to GitHub
+        ↓
+GitHub Actions runs tests
+        ↓
+GitHub Actions builds Docker image
+        ↓
+GitHub Actions pushes image to GHCR
+        ↓
+Docker Compose pulls GHCR image
+        ↓
+FastAPI + Streamlit run from prebuilt image
 
 ## Current Status
 
