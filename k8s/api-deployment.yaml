@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: stockpulse-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: stockpulse-api
+  template:
+    metadata:
+      labels:
+        app: stockpulse-api
+    spec:
+      containers:
+        - name: stockpulse-api
+          image: ghcr.io/ktp96/stockpulse-ai:latest
+          ports: 
+            - containerPort: 8000
+

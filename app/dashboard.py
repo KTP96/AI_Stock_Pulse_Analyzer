@@ -16,7 +16,6 @@ try:
 except requests.exceptions.ConnectionError:
     st.error("Backend Status: Not Connected")
 
-
 ticker = st.text_input("Enter a stock ticker: ")
 analyze_button = st.button("Analyze Stock")
 
@@ -48,7 +47,6 @@ if analyze_button:
                     st.metric("Price Change", data['price_change'])
                 with col6:
                     st.metric("Price Change %",f"{data['price_change_percent']}%")
-                
                 
                 st.write(f"Negative Headlines: {data['negative_headlines']}")
                 st.write(f"Neutral Headlines: {data['neutral_headlines']}")

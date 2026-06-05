@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: stockpulse-dashboard
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: stockpulse-dashboard
+  template:
+    metadata:
+      labels:
+        app: stockpulse-dashboard
+    spec:
+      containers:
+        - name: stockpulse-dashboard
+          image: ghcr.io/ktp96/stockpulse-ai:latest
+          command:
+            - streamlit
+            - run
+            - app/dashboard.py
+            - --server.address
+            - 0.0.0.0
+            - --server.port
+            - "8501"
+          ports:
+            - containerPort: 8501
+          env:
+            - name: API_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: stockpulse-config 
+                  key: API_URL
+
+
